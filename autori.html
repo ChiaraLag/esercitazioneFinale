@@ -1,0 +1,73 @@
+<!DOCTYPE html><meta charset="utf-8">
+<link rel="stylesheet" href="style.css" type="text/css">
+<html>
+<head>
+<title>Autori</title>
+</head>
+<body>
+<header class="main">
+    <h1 color=#ce1212>SuperBlog</h1>
+	<p>Benvenuti su SuperBlog, dove troverai risposta ad ogni tua domanda.</p>
+</header>
+  <nav id="mySidenav" class="sidenav">
+	<h1>Menu</h1>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="autori.html">Gli autori</a></li>
+		<li><a href="articoli.html">Gli articoli</a></li>
+    </ul>
+  </nav>
+  <aside id=myAside class=aside>
+    <p id="demo">Dove ti trovi?</p>
+	<button onclick="getLocation()">Prova!</button>
+	<script>
+	var x=document.getElementById("demo");
+	function getLocation(){
+	if (navigator.geolocation){
+	//funzione supportata o autorizzata,
+	//richiamo la funzione di callback showPosition
+		navigator.geolocation.getCurrentPosition(showPosition);
+		}else{
+			x.innerHTML= "Geolocalizzazione non supportata";
+		}
+	}
+	function showPosition(position){
+		x.innerHTML="Latitudine: " + position.coords.latitude +
+		" Longitudine: " + position.coords.longitude; }
+	</script>
+	<p id="musica">Ascolta</p>
+	<audio controls>
+	<source src="musica.mp3" type="audio/mpeg" draggable="true">
+	</audio>
+	
+</aside>
+<section class="main">
+  <h1>Autori</h1>
+  <ul>
+		<li><a href="personalPage.html">Maria Rosi</a></li>
+		<li><a href="personalPage.html">Julian Gonzalez</a></li>
+		<li><a href="personalPage.html">Martino Lanfranchi</a></li>
+   </ul>
+</section>
+</body>
+<footer>
+<center>
+<img id=”drag” src=superblog.png draggable="true"
+	ondragstart=”drag(event)”>
+	<div id="drop" ondrop="drop(event)"
+	ondragover="allowDrop(event)"></div>
+	<script>
+		function drag(ev){
+		ev.dataTransfer.setData("mioTrasferimento",ev.target.id);
+		}
+		function drag(ev){
+		ev.dataTransfer.setData("mioTrasferimento",ev.target.id);
+		}
+		function drop(ev){
+		ev.preventDefault();
+		var data=ev.dataTransfer.getData("mioTrasferimento");
+		ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</footer>
+</html>

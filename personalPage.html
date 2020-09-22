@@ -1,0 +1,89 @@
+<!DOCTYPE html><meta charset="utf-8">
+<link rel="stylesheet" href="style.css" type="text/css">
+<html>
+<head>
+<title>Pagina Autore</title>
+</head>
+<body>
+<header class="main">
+    <h1 color=#ce1212>SuperBlog</h1>
+	<p>Benvenuti su SuperBlog, dove troverai risposta ad ogni tua domanda.</p>
+</header>
+  <nav id="mySidenav" class="sidenav">
+	<h1>Menu</h1>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="autori.html" target=”_blank” alt=”autori”>Gli autori</a></li>
+		<li><a href="articoli.html" target=”_blank” alt=”articoli”>Articoli</a></li>
+    </ul>
+  </nav>
+  <aside id=myAside class=aside>
+    <p id="demo">Dove ti trovi?</p>
+	<button onclick="getLocation()">Prova!</button>
+	<script>
+	var x=document.getElementById("demo");
+	function getLocation(){
+	if (navigator.geolocation){
+	//funzione supportata o autorizzata,
+	//richiamo la funzione di callback showPosition
+		navigator.geolocation.getCurrentPosition(showPosition);
+		}else{
+			x.innerHTML= "Geolocalizzazione non supportata";
+		}
+	}
+	function showPosition(position){
+		x.innerHTML="Latitudine: " + position.coords.latitude +
+		" Longitudine: " + position.coords.longitude; }
+	</script>
+	<p id="musica">Ascolta</p>
+	<audio controls>
+	<source src="musica.mp3" type="audio/mpeg">
+	</audio>
+	</aside>
+<section class="main">
+ <header>
+  <h1>Informazioni sull'autrice</h1>
+ </header>
+ <article>
+	<table style="width:100%">
+  <tr>
+    <th>Nome:</th>
+    <td>Maria Rossi</td>
+  </tr>
+  <tr>
+    <th>Telefono:</th>
+    <td>35638929583402</td>
+  </tr>
+  <tr>
+    <th>Email:</th>
+    <td>maria.rossi@rossi.it</td>
+  </tr>
+</table>
+<h2>Un video per voi da parte dell'autrice</h2>
+<video width="320" height="240" controls>
+<source src="filmato.mp4" type="video/mp4">
+</video>
+<article>
+
+</body>
+<footer>
+<center>
+<img id=”drag” src=superblog.png draggable="true"
+	ondragstart=”drag(event)”>
+	<div id="drop" ondrop="drop(event)"
+	ondragover="allowDrop(event)"></div>
+	<script>
+		function drag(ev){
+		ev.dataTransfer.setData("mioTrasferimento",ev.target.id);
+		}
+		function drag(ev){
+		ev.dataTransfer.setData("mioTrasferimento",ev.target.id);
+		}
+		function drop(ev){
+		ev.preventDefault();
+		var data=ev.dataTransfer.getData("mioTrasferimento");
+		ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</footer>
+</html>
